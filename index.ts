@@ -20,6 +20,5 @@ app.use(json());
 app.use(router.routes());
 app.listen(10888);
 
-
 app.use(cats.routes());
 app.use(cors());
