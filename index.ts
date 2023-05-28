@@ -4,6 +4,7 @@ import logger from "koa-logger";
 import json from "koa-json";
 import {router as cats} from "./routes/cats";
 import {router as filter} from "./routes/filter";
+import {router as user} from "./routes/user";
 import cors from "@koa/cors";
 
 const app: Koa = new Koa();
@@ -15,6 +16,12 @@ const welcomeAPI = async (ctx: RouterContext, next: any) => {
  await next();
 }
 
+const corsOptions = {
+  origin: [
+    "*",
+  ],
+};
+
 router.get('/api/v1', welcomeAPI);
 app.use(logger());
 app.use(json());
@@ -23,4 +30,5 @@ app.listen(10888);
 
 app.use(cats.routes());
 app.use(filter.routes());
-app.use(cors());
+app.use(user.routes());
+app.use(cors(corsOptions));

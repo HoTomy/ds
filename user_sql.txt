@@ -1,0 +1,15 @@
+CREATE TABLE public.user (
+	id serial4 NOT NULL,
+	username varchar(16) NOT NULL,
+	password varchar(32) NOT NULL,
+	dateregistered timestamp NOT NULL DEFAULT now(),
+	email varchar(64) NOT NULL,
+	staff varchar(1) NULL,
+	CONSTRAINT user_email_key UNIQUE (email),
+	CONSTRAINT user_pkey PRIMARY KEY (id),
+	CONSTRAINT user_username_key UNIQUE (username)
+);
+
+INSERT INTO public.user (username, password, email, staff) VALUES
+	('staff123', '123456', 'staff123@example.com', 'T'),
+	('user123', '123456', 'user123@example.com', 'F');
