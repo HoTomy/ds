@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../routes/login.ts"],
+  "sourcesContent": ["import Router, {RouterContext} from \"koa-router\";\nimport bodyParser from \"koa-bodyparser\";\nimport * as model from '../models/login';\n\n\nconst router = new Router({prefix: '/api/v1/login'});\n\nconst login = async (ctx: RouterContext, next: any) => {\n    let user: any = ctx.request.body;\n    let get_user = await model.login(user);\n    if (get_user.length) {\n      ctx.status = 201;\n      ctx.body = get_user;\n    } else {\n       ctx.body = {}\n    }\n    await next();\n}\n\nrouter.post('/', bodyParser(), login);\n\n\nexport { router };\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,wBAAoC;AACpC,4BAAuB;AACvB,YAAuB;AAGvB,MAAM,SAAS,IAAI,kBAAAA,QAAO,EAAC,QAAQ,gBAAe,CAAC;AAEnD,MAAM,QAAQ,OAAO,KAAoB,SAAc;AACnD,MAAI,OAAY,IAAI,QAAQ;AAC5B,MAAI,WAAW,MAAM,MAAM,MAAM,IAAI;AACrC,MAAI,SAAS,QAAQ;AACnB,QAAI,SAAS;AACb,QAAI,OAAO;AAAA,EACb,OAAO;AACJ,QAAI,OAAO,CAAC;AAAA,EACf;AACA,QAAM,KAAK;AACf;AAEA,OAAO,KAAK,SAAK,sBAAAC,SAAW,GAAG,KAAK;",
+  "names": ["Router", "bodyParser"]
+}

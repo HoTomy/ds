@@ -5,6 +5,7 @@ import json from "koa-json";
 import {router as cats} from "./routes/cats";
 import {router as filter} from "./routes/filter";
 import {router as user} from "./routes/user";
+import {router as login} from "./routes/login";
 import cors from "@koa/cors";
 
 const app: Koa = new Koa();
@@ -31,4 +32,5 @@ app.listen(10888);
 app.use(cats.routes());
 app.use(filter.routes());
 app.use(user.routes());
+app.use(login.routes());
 app.use(cors(corsOptions));

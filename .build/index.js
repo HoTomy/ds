@@ -24,6 +24,7 @@ var import_koa_json = __toESM(require("koa-json"));
 var import_cats = require("./routes/cats");
 var import_filter = require("./routes/filter");
 var import_user = require("./routes/user");
+var import_login = require("./routes/login");
 var import_cors = __toESM(require("@koa/cors"));
 const app = new import_koa.default();
 const router = new import_koa_router.default();
@@ -46,5 +47,6 @@ app.listen(10888);
 app.use(import_cats.router.routes());
 app.use(import_filter.router.routes());
 app.use(import_user.router.routes());
+app.use(import_login.router.routes());
 app.use((0, import_cors.default)(corsOptions));
 //# sourceMappingURL=index.js.map
