@@ -22,7 +22,7 @@ var import_koa_router = __toESM(require("koa-router"));
 var import_koa_logger = __toESM(require("koa-logger"));
 var import_koa_json = __toESM(require("koa-json"));
 var import_cats = require("./routes/cats");
-var import_cors = __toESM(require("@koa/cors"));
+var import_filter = require("./routes/filter");
 const app = new import_koa.default();
 const router = new import_koa_router.default();
 const welcomeAPI = async (ctx, next) => {
@@ -31,11 +31,13 @@ const welcomeAPI = async (ctx, next) => {
   };
   await next();
 };
+const cors = require("@koa/cors");
 router.get("/api/v1", welcomeAPI);
 app.use((0, import_koa_logger.default)());
 app.use((0, import_koa_json.default)());
 app.use(router.routes());
 app.listen(10888);
 app.use(import_cats.router.routes());
-app.use((0, import_cors.default)());
+app.use(import_filter.router.routes());
+app.use(cors());
 //# sourceMappingURL=index.js.map

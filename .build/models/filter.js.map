@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../models/filter.ts"],
+  "sourcesContent": ["import * as db from '../helpers/database';\n\nexport const getAllByFilter = async(cat: any) => {\n  let keys = Object.keys(cat);\n    let values = Object.values(cat);\n    let param = '';\n  for (let i: number = 0; i < values.length; i++) {\n param += `${keys[i]} like '%${values[i]}%' OR`\n  }\n param = param.slice(0, -2);\n    let query = `SELECT * FROM cats WHERE ${param} ORDER BY ID`;\n    let data = await db.run_query(query, values);\n  return data;\n}\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,SAAoB;AAEb,MAAM,iBAAiB,OAAM,QAAa;AAC/C,MAAI,OAAO,OAAO,KAAK,GAAG;AACxB,MAAI,SAAS,OAAO,OAAO,GAAG;AAC9B,MAAI,QAAQ;AACd,WAAS,IAAY,GAAG,IAAI,OAAO,QAAQ,KAAK;AACjD,aAAS,GAAG,KAAK,aAAa,OAAO;AAAA,EACpC;AACD,UAAQ,MAAM,MAAM,GAAG,EAAE;AACtB,MAAI,QAAQ,4BAA4B;AACxC,MAAI,OAAO,MAAM,GAAG,UAAU,OAAO,MAAM;AAC7C,SAAO;AACT;",
+  "names": []
+}

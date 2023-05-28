@@ -3,7 +3,8 @@ import Router, {RouterContext} from "koa-router";
 import logger from "koa-logger";
 import json from "koa-json";
 import {router as cats} from "./routes/cats";
-import cors from '@koa/cors';
+import {router as filter} from "./routes/filter";
+import cors from "@koa/cors";
 
 const app: Koa = new Koa();
 const router: Router = new Router();
@@ -21,4 +22,5 @@ app.use(router.routes());
 app.listen(10888);
 
 app.use(cats.routes());
+app.use(filter.routes());
 app.use(cors());

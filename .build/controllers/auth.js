@@ -60,6 +60,10 @@ const basicAuth = async (ctx, next) => {
     ctx.body = {
       message: "you are not authorized"
     };
+  } else {
+    ctx.body = {
+      message: "you are authorized"
+    };
   }
 };
 // Annotate the CommonJS export names for ESM import in node:

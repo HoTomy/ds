@@ -13,6 +13,7 @@ export const getAll = async() => {
   return data;
 }
 
+
 export const add = async (cat: any) => {
     let keys = Object.keys(cat);
     let values = Object.values(cat);
