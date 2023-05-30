@@ -25,10 +25,17 @@ __export(database_exports, {
 });
 module.exports = __toCommonJS(database_exports);
 var import_sequelize = require("sequelize");
-var import_config = require("../config");
+const config = {
+  host: "tiny.db.elephantsql.com",
+  port: 5432,
+  user: "apzvtefj",
+  password: "NyiReeL2m-RoO-J_LUFDhneQR-ZnrZEb",
+  database: "apzvtefj",
+  connection_limit: 100
+};
 const run_query = async (query, values) => {
   try {
-    const sequelize = new import_sequelize.Sequelize(`postgres://${import_config.config.user}:${import_config.config.password}@${import_config.config.host}:${import_config.config.port}/${import_config.config.database}`);
+    const sequelize = new import_sequelize.Sequelize(`postgres://${config.user}:${config.password}@${config.host}:${config.port}/${config.database}`);
     await sequelize.authenticate();
     let data = await sequelize.query(query, {
       replacements: values,
@@ -43,7 +50,7 @@ const run_query = async (query, values) => {
 };
 const run_insert = async function run_insert2(sql, values) {
   try {
-    const sequelize = new import_sequelize.Sequelize(`postgres://${import_config.config.user}:${import_config.config.password}@${import_config.config.host}:${import_config.config.port}/${import_config.config.database}`);
+    const sequelize = new import_sequelize.Sequelize(`postgres://${config.user}:${config.password}@${config.host}:${config.port}/${config.database}`);
     await sequelize.authenticate();
     let data = await sequelize.query(sql, {
       replacements: values,
@@ -58,7 +65,7 @@ const run_insert = async function run_insert2(sql, values) {
 };
 const run_update = async function run_update2(sql, values) {
   try {
-    const sequelize = new import_sequelize.Sequelize(`postgres://${import_config.config.user}:${import_config.config.password}@${import_config.config.host}:${import_config.config.port}/${import_config.config.database}`);
+    const sequelize = new import_sequelize.Sequelize(`postgres://${config.user}:${config.password}@${config.host}:${config.port}/${config.database}`);
     await sequelize.authenticate();
     let data = await sequelize.query(sql, {
       replacements: values,
@@ -73,7 +80,7 @@ const run_update = async function run_update2(sql, values) {
 };
 const run_delete = async function run_delete2(sql, values) {
   try {
-    const sequelize = new import_sequelize.Sequelize(`postgres://${import_config.config.user}:${import_config.config.password}@${import_config.config.host}:${import_config.config.port}/${import_config.config.database}`);
+    const sequelize = new import_sequelize.Sequelize(`postgres://${config.user}:${config.password}@${config.host}:${config.port}/${config.database}`);
     await sequelize.authenticate();
     let data = await sequelize.query(sql, {
       replacements: values,

@@ -1,0 +1,89 @@
+openapi: 3.0.0
+info:
+   version: 1.0.0
+   title: Back End Demonstration API
+   description: A simple blog API.
+   contact:
+     name: Angus Ho
+     email: pandaho97@gmail.com
+   license:
+     name: Apache 2.0
+     url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+
+servers:
+ - url: 'https://227020684petshelterbackend.pandada1.repl.co'
+   description: Development server
+
+tags:
+ - name: User
+   description: API endpoints for user management.
+ - name: Cats
+   description: Access and perform CRUD operations on blog entries.
+
+paths:
+  /cats:
+    get:
+     tags:
+       - Cats
+     description:
+       Get all cats.
+    post:
+      tags:
+        - Cats
+      description:
+        Create a new cat.
+      requestBody:
+        description: All new cat data.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ./cat.json#/definitions/cat
+      responses:
+        '201':
+          description: Cats created
+  /Cats/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+        description: Numeric id of the cat
+    get:
+     tags:
+       - Cats
+     description:
+       Get cat by id.
+     responses:
+       '200':
+         description: View of a cat record.
+       '404':
+         description: cat was not found in the DB.
+    put:
+     tags:
+       - Cats
+     description:
+       Update cat by ID.
+     requestBody:
+        description: All new cat data.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ./cat.json#/definitions/cat
+     responses:
+       '200':
+         description: Update confirmation and link to record.
+       '404':
+         description: Cat was not found in the DB.
+    delete:
+     tags:
+       - Cats
+     description:
+       Delete cat by ID.
+     responses:
+       '200':
+         description: Delete confirmation.
+       '404':
+         description: Cat was not found in the DB.

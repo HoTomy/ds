@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../jest.config.js"],
+  "sourcesContent": ["/** @type {import('ts-jest').JestConfigWithTsJest} */\nmodule.exports = {\n  preset: 'ts-jest',\n  testEnvironment: 'node',\n};"],
+  "mappings": ";AACA,OAAO,UAAU;AAAA,EACf,QAAQ;AAAA,EACR,iBAAiB;AACnB;",
+  "names": []
+}

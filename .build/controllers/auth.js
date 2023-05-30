@@ -29,22 +29,22 @@ __export(auth_exports, {
 module.exports = __toCommonJS(auth_exports);
 var import_koa_passport = __toESM(require("koa-passport"));
 var import_passport_http = require("passport-http");
-var users = __toESM(require("../models/users"));
-const verifyPassword = (user, password) => {
-  return user.password === password;
+var user = __toESM(require("../models/user"));
+const verifyPassword = (user2, password) => {
+  return user2.password === password;
 };
 import_koa_passport.default.use(new import_passport_http.BasicStrategy(async (username, password, done) => {
   let result = [];
   try {
-    result = await users.findByUsername(username);
+    result = await user.findByUsername(username);
   } catch (error) {
     console.error(`Error during authentication for user ${username}: ${error}`);
     done(null, false);
   }
   if (result.length) {
-    const user = result[0];
-    if (verifyPassword(user, password)) {
-      done(null, { user });
+    const user2 = result[0];
+    if (verifyPassword(user2, password)) {
+      done(null, { user: user2 });
     } else {
       console.log(`Password incorrect for ${username}`);
       done(null, false);

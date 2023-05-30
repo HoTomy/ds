@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../routes/cats.test.ts"],
+  "sourcesContent": ["import {describe, expect, test} from '@jest/globals';\nimport Koa from \"koa\";\nimport json from \"koa-json\";\nimport passport from 'koa-passport';\nimport { router } from '../routes/cats';\nimport request from 'supertest';\n\nconst app: Koa = new Koa();\n\napp.use(json());\napp.use(passport.initialize());\napp.use(router.middleware());\n\ndescribe('Get / - a simple api endpoint', ()=> {\n test('Get all cat', async ()=>{\n const result = await\nrequest(app.callback()).get('/api/v1/cats');\n expect(result.statusCode).toEqual(200);\n })\n})\n\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;AAAA,qBAAqC;AACrC,iBAAgB;AAChB,sBAAiB;AACjB,0BAAqB;AACrB,kBAAuB;AACvB,uBAAoB;AAEpB,MAAM,MAAW,IAAI,WAAAA,QAAI;AAEzB,IAAI,QAAI,gBAAAC,SAAK,CAAC;AACd,IAAI,IAAI,oBAAAC,QAAS,WAAW,CAAC;AAC7B,IAAI,IAAI,mBAAO,WAAW,CAAC;AAAA,IAE3B,yBAAS,iCAAiC,MAAK;AAC9C,2BAAK,eAAe,YAAU;AAC9B,UAAM,SAAS,UAChB,iBAAAC,SAAQ,IAAI,SAAS,CAAC,EAAE,IAAI,cAAc;AACzC,+BAAO,OAAO,UAAU,EAAE,QAAQ,GAAG;AAAA,EACrC,CAAC;AACF,CAAC;",
+  "names": ["Koa", "json", "passport", "request"]
+}

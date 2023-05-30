@@ -25,6 +25,7 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 var user_exports = {};
 __export(user_exports, {
   deleteByUserId: () => deleteByUserId,
+  findByUsername: () => findByUsername,
   getAlluser: () => getAlluser,
   getByUserId: () => getByUserId,
   register: () => register,
@@ -32,6 +33,11 @@ __export(user_exports, {
 });
 module.exports = __toCommonJS(user_exports);
 var db = __toESM(require("../helpers/database"));
+const findByUsername = async (username) => {
+  const query = `SELECT * FROM public.user WHERE USERNAME = ?`;
+  const user = await db.run_query(query, [username]);
+  return user;
+};
 const getAlluser = async () => {
   let query = "SELECT * FROM public.user order by id";
   let data = await db.run_query(query, null);
@@ -90,6 +96,7 @@ const deleteByUserId = async (id) => {
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   deleteByUserId,
+  findByUsername,
   getAlluser,
   getByUserId,
   register,

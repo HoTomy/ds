@@ -26,6 +26,7 @@ var import_filter = require("./routes/filter");
 var import_user = require("./routes/user");
 var import_login = require("./routes/login");
 var import_cors = __toESM(require("@koa/cors"));
+var import_koa_static_folder = __toESM(require("koa-static-folder"));
 const app = new import_koa.default();
 const router = new import_koa_router.default();
 const welcomeAPI = async (ctx, next) => {
@@ -33,11 +34,6 @@ const welcomeAPI = async (ctx, next) => {
     message: "Welcome to the Cat Shelter !"
   };
   await next();
-};
-const corsOptions = {
-  origin: [
-    "*"
-  ]
 };
 router.get("/api/v1", welcomeAPI);
 app.use((0, import_koa_logger.default)());
@@ -48,5 +44,6 @@ app.use(import_cats.router.routes());
 app.use(import_filter.router.routes());
 app.use(import_user.router.routes());
 app.use(import_login.router.routes());
-app.use((0, import_cors.default)(corsOptions));
+app.use((0, import_cors.default)());
+app.use((0, import_koa_static_folder.default)("./docs"));
 //# sourceMappingURL=index.js.map

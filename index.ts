@@ -8,6 +8,8 @@ import {router as user} from "./routes/user";
 import {router as login} from "./routes/login";
 import cors from "@koa/cors";
 
+import serve from 'koa-static-folder';
+
 const app: Koa = new Koa();
 const router: Router = new Router();
 const welcomeAPI = async (ctx: RouterContext, next: any) => {
@@ -16,12 +18,6 @@ const welcomeAPI = async (ctx: RouterContext, next: any) => {
  };
  await next();
 }
-
-const corsOptions = {
-  origin: [
-    "*",
-  ],
-};
 
 router.get('/api/v1', welcomeAPI);
 app.use(logger());
@@ -33,4 +29,7 @@ app.use(cats.routes());
 app.use(filter.routes());
 app.use(user.routes());
 app.use(login.routes());
-app.use(cors(corsOptions));
+app.use(cors());
+
+app.use(serve('./docs'));
+
