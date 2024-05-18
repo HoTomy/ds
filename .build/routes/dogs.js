@@ -22,20 +22,20 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var cats_exports = {};
-__export(cats_exports, {
+var dogs_exports = {};
+__export(dogs_exports, {
   router: () => router
 });
-module.exports = __toCommonJS(cats_exports);
+module.exports = __toCommonJS(dogs_exports);
 var import_koa_router = __toESM(require("koa-router"));
 var import_koa_bodyparser = __toESM(require("koa-bodyparser"));
-var model = __toESM(require("../models/cats"));
+var model = __toESM(require("../models/dogs"));
 var import_auth = require("../controllers/auth");
-const router = new import_koa_router.default({ prefix: "/api/v1/cats" });
+const router = new import_koa_router.default({ prefix: "/api/v1/dogs" });
 const getAll = async (ctx, next) => {
-  let cats = await model.getAll();
-  if (cats.length) {
-    ctx.body = cats;
+  let dogs = await model.getAll();
+  if (dogs.length) {
+    ctx.body = dogs;
   } else {
     ctx.body = {};
   }
@@ -43,15 +43,15 @@ const getAll = async (ctx, next) => {
 };
 const getById = async (ctx, next) => {
   let id = ctx.params.id;
-  let cat = await model.getById(id);
-  if (cat.length) {
-    ctx.body = cat[0];
+  let dog = await model.getById(id);
+  if (dog.length) {
+    ctx.body = dog[0];
   } else {
     ctx.status = 404;
   }
   await next();
 };
-const createCats = async (ctx, next) => {
+const createDogs = async (ctx, next) => {
   const body = ctx.request.body;
   let result = await model.add(body);
   if (result.status == 201) {
@@ -63,27 +63,27 @@ const createCats = async (ctx, next) => {
   }
   await next();
 };
-const updateCats = async (ctx, next) => {
+const updateDogs = async (ctx, next) => {
   let id = ctx.params.id;
   let context = ctx.request.body;
-  let update_cats = await model.updateById(context, id);
-  let cat = await model.getById(id);
-  ctx.body = cat;
+  let update_dogs = await model.updateById(context, id);
+  let dog = await model.getById(id);
+  ctx.body = dog;
   ctx.status = 200;
-  if (cat.length) {
-    ctx.body = cat;
+  if (dog.length) {
+    ctx.body = dog;
   } else {
     ctx.body = {};
   }
   await next();
 };
-const deleteCats = async (ctx, next) => {
+const deleteDogs = async (ctx, next) => {
   let id = ctx.params.id;
   await model.deleteById(id);
-  let cat = await model.getById(id);
-  ctx.body = cat;
+  let dog = await model.getById(id);
+  ctx.body = dog;
   ctx.status = 200;
-  if (cat.length) {
+  if (dog.length) {
   } else {
     ctx.body = `id:${id} deleted success`;
   }
@@ -91,11 +91,11 @@ const deleteCats = async (ctx, next) => {
 };
 router.get("/", getAll);
 router.get("/:id([0-9]{1,})", getById);
-router.post("/", import_auth.basicAuth, (0, import_koa_bodyparser.default)(), createCats);
-router.put("/:id([0-9]{1,})", import_auth.basicAuth, (0, import_koa_bodyparser.default)(), updateCats);
-router.del("/:id([0-9]{1,})", import_auth.basicAuth, deleteCats);
+router.post("/", import_auth.basicAuth, (0, import_koa_bodyparser.default)(), createDogs);
+router.put("/:id([0-9]{1,})", import_auth.basicAuth, (0, import_koa_bodyparser.default)(), updateDogs);
+router.del("/:id([0-9]{1,})", import_auth.basicAuth, deleteDogs);
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   router
 });
-//# sourceMappingURL=cats.js.map
+//# sourceMappingURL=dogs.js.map

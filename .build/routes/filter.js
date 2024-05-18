@@ -33,10 +33,10 @@ var model = __toESM(require("../models/filter"));
 const router = new import_koa_router.default({ prefix: "/api/v1/filter" });
 const getAllByFilter = async (ctx, next) => {
   let filter = ctx.request.body;
-  let filter_cats = await model.getAllByFilter(filter);
-  if (filter_cats.length) {
+  let filter_dogs = await model.getAllByFilter(filter);
+  if (filter_dogs.length) {
     ctx.status = 201;
-    ctx.body = filter_cats;
+    ctx.body = filter_dogs;
   } else {
     ctx.body = {};
   }

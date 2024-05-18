@@ -4,86 +4,86 @@ info:
    title: Back End Demonstration API
    description: A simple blog API.
    contact:
-     name: Angus Ho
-     email: pandaho97@gmail.com
+     name: Tomy Ho
+     email: tomyho@gmail.com
    license:
      name: Apache 2.0
      url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
 
 servers:
- - url: 'https://227020684petshelterbackend.pandada1.repl.co'
+ - url: 'https://ds.hotomy.repl.co'
    description: Development server
 
 tags:
  - name: User
    description: API endpoints for user management.
- - name: Cats
+ - name: Dogs
    description: Access and perform CRUD operations on blog entries.
 
 paths:
-  /cats:
+  /dogs:
     get:
      tags:
-       - Cats
+       - Dogs
      description:
-       Get all cats.
+       Get all dogs.
     post:
       tags:
-        - Cats
+        - Dogs
       description:
-        Create a new cat.
+        Create a new dog.
       requestBody:
-        description: All new cat data.
+        description: All new dog data.
         required: true
         content:
           application/json:
             schema:
-              $ref: ./cat.json#/definitions/cat
+              $ref: ./dog.json#/definitions/dog
       responses:
         '201':
-          description: Cats created
-  /Cats/{id}:
+          description: Dogs created
+  /Dogs/{id}:
     parameters:
       - in: path
         name: id
         schema:
           type: integer
         required: true
-        description: Numeric id of the cat
+        description: Numeric id of the dog
     get:
      tags:
-       - Cats
+       - Dogs
      description:
-       Get cat by id.
+       Get dog by id.
      responses:
        '200':
-         description: View of a cat record.
+         description: View of a dog record.
        '404':
-         description: cat was not found in the DB.
+         description: dog was not found in the DB.
     put:
      tags:
-       - Cats
+       - Dogs
      description:
-       Update cat by ID.
+       Update dog by ID.
      requestBody:
-        description: All new cat data.
+        description: All new dog data.
         required: true
         content:
           application/json:
             schema:
-              $ref: ./cat.json#/definitions/cat
+              $ref: ./dog.json#/definitions/dog
      responses:
        '200':
          description: Update confirmation and link to record.
        '404':
-         description: Cat was not found in the DB.
+         description: Dog was not found in the DB.
     delete:
      tags:
-       - Cats
+       - Dogs
      description:
-       Delete cat by ID.
+       Delete dog by ID.
      responses:
        '200':
          description: Delete confirmation.
        '404':
-         description: Cat was not found in the DB.
+         description: Dog was not found in the DB.

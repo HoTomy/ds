@@ -16,48 +16,48 @@ var __copyProps = (to, from, except, desc) => {
   return to;
 };
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var cat_schema_exports = {};
-__export(cat_schema_exports, {
-  cat: () => cat
+var dog_schema_exports = {};
+__export(dog_schema_exports, {
+  dog: () => dog
 });
-module.exports = __toCommonJS(cat_schema_exports);
-const cat = {
+module.exports = __toCommonJS(dog_schema_exports);
+const dog = {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "/cat",
-  "title": "Cat",
-  "description": "A cat in the blog",
+  "id": "/dog",
+  "title": "Dog",
+  "description": "A dog in the blog",
   "type": "object",
   "properties": {
     "name": {
-      "description": "Name of the cat",
+      "description": "Name of the dog",
       "type": "string"
     },
     "breeds": {
-      "description": "Breeds of the cat",
+      "description": "Breeds of the dog",
       "type": "string"
     },
     "gender": {
-      "description": "Sex of the cat",
+      "description": "Sex of the dog",
       "type": "string"
     },
     "birth": {
-      "description": "Birth of the cat",
+      "description": "Birth of the dog",
       "type": "string"
     },
     "centre": {
-      "description": "Centre of the cat",
+      "description": "Centre of the dog",
       "type": "string"
     },
     "imageurl": {
-      "description": "URL for main image to show in cat",
+      "description": "URL for main image to show in dog",
       "type": "string"
     },
     "remark": {
-      "description": "Remark of the cat",
+      "description": "Remark of the dog",
       "type": "string"
     },
     "status": {
-      "description": "Status of the cat",
+      "description": "Status of the dog",
       "type": "string"
     }
   },
@@ -65,6 +65,6 @@ const cat = {
 };
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
-  cat
+  dog
 });
-//# sourceMappingURL=cat.schema.js.map
+//# sourceMappingURL=dog.schema.js.map

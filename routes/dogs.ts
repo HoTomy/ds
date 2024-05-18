@@ -1,17 +1,17 @@
 import Router, {RouterContext} from "koa-router";
 import bodyParser from "koa-bodyparser";
-import * as model from '../models/cats';
+import * as model from '../models/dogs';
 import { basicAuth } from "../controllers/auth";
 
 
-const router = new Router({prefix: '/api/v1/cats'});
+const router = new Router({prefix: '/api/v1/dogs'});
 
 
 // New getAll
 const getAll = async (ctx: RouterContext, next: any)=> {
- let cats = await model.getAll();
- if (cats.length) {
- ctx.body = cats;
+ let dogs = await model.getAll();
+ if (dogs.length) {
+ ctx.body = dogs;
  } else {
  ctx.body = {}
  }
@@ -20,16 +20,16 @@ const getAll = async (ctx: RouterContext, next: any)=> {
 
 const getById = async (ctx: RouterContext, next: any) => {
   let id = ctx.params.id;
-  let cat = await model.getById(id);
-  if (cat.length) {
-    ctx.body = cat[0];
+  let dog = await model.getById(id);
+  if (dog.length) {
+    ctx.body = dog[0];
   } else {
     ctx.status = 404;
   }
   await next();
 }
 
-const createCats = async (ctx: RouterContext, next: any) => {
+const createDogs = async (ctx: RouterContext, next: any) => {
   const body = ctx.request.body;
   let result = await model.add(body);
   if (result.status == 201) {
@@ -42,28 +42,28 @@ const createCats = async (ctx: RouterContext, next: any) => {
   await next();
 }
 
-const updateCats = async (ctx: RouterContext, next: any) => {
+const updateDogs = async (ctx: RouterContext, next: any) => {
     let id = ctx.params.id;
     let context: any = ctx.request.body;
-    let update_cats = await model.updateById(context,id);
-    let cat = await model.getById(id);
-    ctx.body = cat;
+    let update_dogs = await model.updateById(context,id);
+    let dog = await model.getById(id);
+    ctx.body = dog;
     ctx.status = 200;  
-    if (cat.length){
-        ctx.body = cat;
+    if (dog.length){
+        ctx.body = dog;
     } else {
         ctx.body = {}
     }
     await next();
 }
 
-const deleteCats = async (ctx: RouterContext, next: any) => {
+const deleteDogs = async (ctx: RouterContext, next: any) => {
     let id = ctx.params.id;
     await model.deleteById(id);
-    let cat = await model.getById(id);
-    ctx.body = cat;
+    let dog = await model.getById(id);
+    ctx.body = dog;
     ctx.status = 200;  
-    if (cat.length){
+    if (dog.length){
     } else {
         ctx.body = `id:${id} deleted success`
     }
@@ -72,9 +72,9 @@ const deleteCats = async (ctx: RouterContext, next: any) => {
 
 router.get('/', getAll);
 router.get('/:id([0-9]{1,})', getById);
-router.post('/',basicAuth, bodyParser(), createCats);
-router.put('/:id([0-9]{1,})',basicAuth,bodyParser(),updateCats);
-router.del('/:id([0-9]{1,})',basicAuth, deleteCats);
+router.post('/',basicAuth, bodyParser(), createDogs);
+router.put('/:id([0-9]{1,})',basicAuth,bodyParser(),updateDogs);
+router.del('/:id([0-9]{1,})',basicAuth, deleteDogs);
 
 // Finally, define the exported object when import from other scripts.
 export { router };

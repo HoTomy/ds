@@ -28,9 +28,9 @@ __export(login_exports, {
 });
 module.exports = __toCommonJS(login_exports);
 var db = __toESM(require("../helpers/database"));
-const login = async (cat) => {
-  let keys = Object.keys(cat);
-  let values = Object.values(cat);
+const login = async (dog) => {
+  let keys = Object.keys(dog);
+  let values = Object.values(dog);
   let param = "";
   for (let i = 0; i < values.length; i++) {
     param += `${keys[i]} = '${values[i]}' AND `;

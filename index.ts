@@ -2,7 +2,7 @@ import Koa from "koa";
 import Router, {RouterContext} from "koa-router";
 import logger from "koa-logger";
 import json from "koa-json";
-import {router as cats} from "./routes/cats";
+import {router as cats} from "./routes/dogs";
 import {router as filter} from "./routes/filter";
 import {router as user} from "./routes/user";
 import {router as login} from "./routes/login";
@@ -14,7 +14,7 @@ const app: Koa = new Koa();
 const router: Router = new Router();
 const welcomeAPI = async (ctx: RouterContext, next: any) => {
  ctx.body = {
- message: "Welcome to the Cat Shelter !"
+ message: "Welcome to the Dog Shelter !"
  };
  await next();
 }

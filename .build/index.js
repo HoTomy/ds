@@ -21,7 +21,7 @@ var import_koa = __toESM(require("koa"));
 var import_koa_router = __toESM(require("koa-router"));
 var import_koa_logger = __toESM(require("koa-logger"));
 var import_koa_json = __toESM(require("koa-json"));
-var import_cats = require("./routes/cats");
+var import_dogs = require("./routes/dogs");
 var import_filter = require("./routes/filter");
 var import_user = require("./routes/user");
 var import_login = require("./routes/login");
@@ -31,7 +31,7 @@ const app = new import_koa.default();
 const router = new import_koa_router.default();
 const welcomeAPI = async (ctx, next) => {
   ctx.body = {
-    message: "Welcome to the Cat Shelter !"
+    message: "Welcome to the Dog Shelter !"
   };
   await next();
 };
@@ -40,7 +40,7 @@ app.use((0, import_koa_logger.default)());
 app.use((0, import_koa_json.default)());
 app.use(router.routes());
 app.listen(10888);
-app.use(import_cats.router.routes());
+app.use(import_dogs.router.routes());
 app.use(import_filter.router.routes());
 app.use(import_user.router.routes());
 app.use(import_login.router.routes());

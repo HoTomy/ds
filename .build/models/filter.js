@@ -28,15 +28,15 @@ __export(filter_exports, {
 });
 module.exports = __toCommonJS(filter_exports);
 var db = __toESM(require("../helpers/database"));
-const getAllByFilter = async (cat) => {
-  let keys = Object.keys(cat);
-  let values = Object.values(cat);
+const getAllByFilter = async (dog) => {
+  let keys = Object.keys(dog);
+  let values = Object.values(dog);
   let param = "";
   for (let i = 0; i < values.length; i++) {
     param += `${keys[i]} like '%${values[i]}%' OR`;
   }
   param = param.slice(0, -2);
-  let query = `SELECT * FROM cats WHERE ${param} ORDER BY ID`;
+  let query = `SELECT * FROM dogs WHERE ${param} ORDER BY ID`;
   let data = await db.run_query(query, values);
   return data;
 };

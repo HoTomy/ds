@@ -22,37 +22,37 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var cats_exports = {};
-__export(cats_exports, {
+var dogs_exports = {};
+__export(dogs_exports, {
   add: () => add,
   deleteById: () => deleteById,
   getAll: () => getAll,
   getById: () => getById,
   updateById: () => updateById
 });
-module.exports = __toCommonJS(cats_exports);
+module.exports = __toCommonJS(dogs_exports);
 var db = __toESM(require("../helpers/database"));
 const getById = async (id) => {
-  let query = "SELECT * FROM cats WHERE ID = ?";
+  let query = "SELECT * FROM dogs WHERE ID = ?";
   let values = [id];
   let data = await db.run_query(query, values);
   return data;
 };
 const getAll = async () => {
-  let query = "SELECT * FROM cats order by id";
+  let query = "SELECT * FROM dogs order by id";
   let data = await db.run_query(query, null);
   return data;
 };
-const add = async (cat) => {
-  let keys = Object.keys(cat);
-  let values = Object.values(cat);
+const add = async (dog) => {
+  let keys = Object.keys(dog);
+  let values = Object.values(dog);
   let key = keys.join(",");
   let param = "";
   for (let i = 0; i < values.length; i++) {
     param += "?,";
   }
   param = param.slice(0, -1);
-  let query = `INSERT INTO cats (${key}) VALUES (${param})`;
+  let query = `INSERT INTO dogs (${key}) VALUES (${param})`;
   try {
     await db.run_insert(query, values);
     return { status: 201 };
@@ -60,16 +60,16 @@ const add = async (cat) => {
     return err;
   }
 };
-const updateById = async (cat, id) => {
+const updateById = async (dog, id) => {
   let aid = [id];
-  let keys = Object.keys(cat);
-  let values = Object.values(cat);
+  let keys = Object.keys(dog);
+  let values = Object.values(dog);
   let param = "";
   for (let i = 0; i < values.length; i++) {
     param += `${keys[i]}= '${values[i]}',`;
   }
   param = param.slice(0, -1);
-  let query = `UPDATE cats SET ${param} WHERE id = ?`;
+  let query = `UPDATE dogs SET ${param} WHERE id = ?`;
   try {
     await db.run_update(query, aid);
     return { status: 201 };
@@ -79,7 +79,7 @@ const updateById = async (cat, id) => {
 };
 const deleteById = async (id) => {
   let values = [id];
-  let query = `DELETE FROM cats WHERE id='${values}';`;
+  let query = `DELETE FROM dogs WHERE id='${values}';`;
   try {
     await db.run_delete(query, values);
     return { status: 201 };
@@ -95,4 +95,4 @@ const deleteById = async (id) => {
   getById,
   updateById
 });
-//# sourceMappingURL=cats.js.map
+//# sourceMappingURL=dogs.js.map

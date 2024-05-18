@@ -22,7 +22,7 @@ __export(validation_exports, {
 });
 module.exports = __toCommonJS(validation_exports);
 var import_jsonschema = require("jsonschema");
-var import_cat = require("../schema/cat.schema");
+var import_dog = require("../schemas/dog.schema");
 const v = new import_jsonschema.Validator();
 const validateArticle = async (ctx, next) => {
   const validationOptions = {
@@ -31,7 +31,7 @@ const validateArticle = async (ctx, next) => {
   };
   const body = ctx.request.body;
   try {
-    v.validate(body, import_cat.cat, validationOptions);
+    v.validate(body, import_dog.dog, validationOptions);
     await next();
   } catch (error) {
     if (error instanceof import_jsonschema.ValidationError) {

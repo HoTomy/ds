@@ -1,8 +1,8 @@
 import * as db from '../helpers/database';
 
-export const login = async(cat: any) => {
-  let keys = Object.keys(cat);
-    let values = Object.values(cat);
+export const login = async(dog: any) => {
+  let keys = Object.keys(dog);
+    let values = Object.values(dog);
     let param = '';
   for (let i: number = 0; i < values.length; i++) {
  param += `${keys[i]} = '${values[i]}' AND `
